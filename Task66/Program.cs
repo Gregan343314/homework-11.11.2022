@@ -1,27 +1,20 @@
 ﻿// Задание №66.
 
-Console.Write("Введите число M: ");
-int m = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите начальное число M:");
+int numberM = int.Parse(Console.ReadLine());
 
-Console.Write("Введите число N: ");
-int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите начальное число N:");
+int numberN = int.Parse(Console.ReadLine());
 
-SumFromMToN(m, n);
-
-void SumFromMToN(int m, int n)
+void GapNumberSum (int numberM, int numberN, int sum)
 {
-    Console.Write(SumMN(m - 1, n));
-}
-
-int SumMN(int m, int n)
-{
-    int res = m;
-    if (m == n)
-        return 0;
-    else
+    if (numberM > numberN) 
     {
-        m++;
-        res = m + SumMN(m, n);
-        return res;
+        Console.WriteLine($"Сумма натуральных элементов в промежутке от M до N: {sum}"); 
+        return;
     }
+    sum = sum + (numberM++);
+    GapNumberSum(numberM, numberN, sum);
 }
+
+GapNumberSum(numberM, numberN, 0);
